@@ -59,6 +59,10 @@
                        FontSize="16"
                        FontWeight="Medium"
                        HorizontalAlignment="Center" />
+
+            <!-- Historia cykli -->
+            <TextBlock Text="Historia cykli:" FontWeight="SemiBold" Margin="0,10,0,0" />
+            <ListBox Name="HistoryList" Height="150" />
         </StackPanel>
     </Border>
 </Window>

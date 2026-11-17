@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
@@ -8,6 +9,7 @@ namespace minutnik;
 public partial class MainWindow : Window
 {
     private readonly DispatcherTimer _timer;
+    private readonly List<string> _history = new();
     private int _workMinutes = 25;
     private int _breakMinutes = 5;
     private int _remainingSeconds = 25 * 60;
@@ -52,6 +54,8 @@ public partial class MainWindow : Window
                 // Ukończenie przerwy i pełnego cyklu
                 _cycles++;
                 CyclesTextBlock.Text = $"Ukończone cykle: {_cycles}";
+                _history.Add($"{DateTime.Now:HH:mm} — cykl {_cycles}");
+                HistoryList.ItemsSource = _history.ToArray();
 
                 // Przejście do kolejnego cyklu pracy
                 _isWorkSession = true;
